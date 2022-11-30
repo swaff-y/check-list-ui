@@ -1,0 +1,15 @@
+@import "~bootstrap/scss/bootstrap";
+
+* {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root{
+  --main-color: #222;
+}
+
+.App{
+  background-color: var(--main-color);
+  padding: 20px;
+}
