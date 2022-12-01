@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function NavBar() {
+function NavBar({ data }) {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -16,9 +16,15 @@ function NavBar() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">List</Nav.Link>
-            <Nav.Link href="#action2">Development</Nav.Link>
-            <Nav.Link href="#action3">CA-123456</Nav.Link>
+            {
+              data[0] && <Nav.Link href="#action1">{ data[0] }</Nav.Link>
+            }
+            {
+              data[1] && <Nav.Link href="#action1">{ data[1] }</Nav.Link>
+            }
+            {
+              data[2] && <Nav.Link href="#action1">{ data[2] }</Nav.Link>
+            }
           </Nav>
           <Form className="d-flex">
             <Form.Control
