@@ -6,7 +6,7 @@
       "tasks": [
         {
           "name": "read requirements",
-          "status": "y",
+          "status": "n",
           "time": "2022-11-29 00:12",
           "subTasks": [
             {
@@ -16,14 +16,14 @@
             },
             {
               "name": "Can they be met?",
-              "status": "y",
+              "status": "n",
               "time": "2022-11-29 00:12"
             }
           ]
         },
         {
           "name": "Prep Environment",
-          "status": "y",
+          "status": "n",
           "time": "2022-11-29 00:12",
           "subTasks": [
             {
@@ -33,7 +33,7 @@
             },
             {
               "name": "Can you run the current version end-to-end?",
-              "status": "y",
+              "status": "n",
               "time": "2022-11-29 00:12"
             },
             {
@@ -243,23 +243,6 @@
             },
             {
               "name": "Prepare code for testing",
-              "status": "y",
-              "time": "2022-11-29 00:12"
-            }
-          ]
-        },
-        {
-          "name": "Run Specs",
-          "status": "y",
-          "time": "2022-11-29 00:12",
-          "subTasks": [
-            {
-              "name": "Does linting pass?",
-              "status": "y",
-              "time": "2022-11-29 00:12"
-            },
-            {
-              "name": "Do specs pass?",
               "status": "y",
               "time": "2022-11-29 00:12"
             }

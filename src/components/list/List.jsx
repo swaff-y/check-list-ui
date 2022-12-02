@@ -1,12 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 function List({ type, data, callback }) {
+  const [tick] = useState('&#9989;')
+  const [cross] = useState('&#10060;')
+
   const handleClick = (value) => {
     callback(value);
   }
+
   return (
-    <Table striped bordered hover>
+    <Table bordered>
       <thead>
         {
           type == 'List' ?
@@ -24,6 +29,7 @@ function List({ type, data, callback }) {
             <tr>
               <th>#</th>
               <th>Task</th>
+              <th>SubTasks</th>
               <th>Status</th>
               <th>Date</th>
             </tr>
@@ -41,14 +47,62 @@ function List({ type, data, callback }) {
             type == 'Reference' ?
               <tr key={index}>
                 <td>{ index + 1 }</td>
-                <td>{ line?.ref }</td>
+                <td onClick={() => handleClick(line)}>{ line?.ref }</td>
               </tr>
             :
             <tr key={index}>
               <td>{ index + 1 }</td>
               <td>{ line?.name }</td>
-              <td>{ index + 1 }</td>
-              <td>{ line?.name }</td>
+              <td>
+                <ListGroup>
+                  {
+                    line?.subTasks?.map((task)=>
+                      <ListGroup.Item
+                        variant={
+                          task?.status == 'y' 
+                          ? 
+                          'success' 
+                          : 
+                          'danger'
+                        }
+                        style={{
+                          display:'flex',
+                          justifyContent: 'space-between'
+                        }}
+                      >
+                        {
+                          <span>{task?.name}</span>
+                        } {
+                          <span>{task?.time}</span>
+                        }
+                      </ListGroup.Item>
+                    )
+                  }
+                </ListGroup>
+              </td>
+              <td 
+                style={{
+                  display:'flex',
+                  justifyContent: 'center',
+                  alignItems: 'flex-end',
+                }}
+              >
+                <div
+                  style={{
+                    marginTop: '28px'
+                  }}
+                >
+                  { 
+                    line?.status == 'y' 
+                    ?
+                    "\u2705"
+                    :
+                    "\u274C"
+                  }
+                </div>
+              </td>
+
+              <td style={{textAlign:'center'}}>{ line?.time }</td>
             </tr>
           )
         }
