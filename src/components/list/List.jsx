@@ -56,8 +56,9 @@ function List({ type, data, callback }) {
               <td>
                 <ListGroup>
                   {
-                    line?.subTasks?.map((task)=>
+                    line?.subTasks?.map((task,index)=>
                       <ListGroup.Item
+                        key={index}
                         variant={
                           task?.status == 'y' 
                           ? 

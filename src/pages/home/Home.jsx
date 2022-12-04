@@ -1,14 +1,32 @@
 import './home.scss';
 import List from '../../components/list/List';
 import NavBar from '../../components/navbar/Navbar';
-import React, { useEffect, useState } from 'react';
-import data from '../../data.json'
+import { useEffect, useState } from 'react';
 
 const Home = (props) => {
   const [title, setTitle ] = useState('List');
   const [type, setType ] = useState('List');
   const [nav, setNav ] = useState(['List']);
-  const [listData, setListData ] = useState([...new Set(data.results.map(item => item.name))]);
+  const [listData, setListData ] = useState([]);
+  const [data, setData ] = useState();
+
+  useEffect(()=>{
+    const getData = async () => {
+      try {
+        let res = await fetch('data.json');
+        let json = await res.json();
+        setData(json);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getData()
+  },[])
+
+  useEffect(()=>{
+    if(data?.results)
+      setListData([...new Set(data.results.map(item => item.name))])
+  },[data])
 
   const setList = (value) => {
     setTitle(value);
