@@ -2,6 +2,7 @@ import './home.scss';
 import List from '../../components/list/List';
 import NavBar from '../../components/navbar/Navbar';
 import { useEffect, useState } from 'react';
+import { checkListStatus } from '../../helperFunctions';
 
 const Home = (props) => {
   const [title, setTitle ] = useState('List');
@@ -9,6 +10,25 @@ const Home = (props) => {
   const [nav, setNav ] = useState(['List']);
   const [listData, setListData ] = useState([]);
   const [data, setData ] = useState();
+
+  useEffect(() => {
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    if(type == 'Tasks'){
+      document.title = title;
+      if(checkListStatus(listData))
+        link.href = 'tick.ico';
+      else
+      link.href = 'cross.ico';
+    } else {
+      document.title = 'Checklist';
+      link.href = 'list.ico';
+    }
+  }, [type]);
 
   useEffect(()=>{
     const getData = async () => {

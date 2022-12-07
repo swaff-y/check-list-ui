@@ -60,10 +60,14 @@ function List({ type, data, callback }) {
                       <ListGroup.Item
                         key={index}
                         variant={
-                          task?.status == 'y' 
+                          task?.status == 'y'?.toLowerCase() 
                           ? 
                           'success' 
-                          : 
+                          :
+                          task?.status == 'na'?.toLowerCase() 
+                          ?
+                          'info'
+                          :
                           'danger'
                         }
                         style={{
@@ -94,9 +98,13 @@ function List({ type, data, callback }) {
                   }}
                 >
                   { 
-                    line?.status == 'y' 
+                    line?.status == 'y'?.toLowerCase() 
                     ?
                     "\u2705"
+                    :
+                    line?.status == 'na'?.toLowerCase() 
+                    ?
+                    '\u207F\u002F\u2090' 
                     :
                     "\u274C"
                   }

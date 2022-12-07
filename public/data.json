@@ -6,7 +6,7 @@
       "tasks": [
         {
           "name": "read requirements",
-          "status": "n",
+          "status": "na",
           "time": "2022-11-29 00:12",
           "subTasks": [
             {
@@ -16,7 +16,7 @@
             },
             {
               "name": "Can they be met?",
-              "status": "n",
+              "status": "na",
               "time": "2022-11-29 00:12"
             }
           ]
