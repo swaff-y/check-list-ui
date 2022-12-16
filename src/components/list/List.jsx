@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import ListGroup from 'react-bootstrap/ListGroup';
 
@@ -111,7 +111,7 @@ function List({ type, data, callback }) {
                 </div>
               </td>
 
-              <td style={{textAlign:'center'}}>{ line?.time }</td>
+              <td style={{textAlign:'center'}}>{ line?.time }<br/>{ line?.user }</td>
             </tr>
           )
         }
